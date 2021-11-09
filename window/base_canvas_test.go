@@ -3,7 +3,7 @@ package window
 import (
 	"testing"
 
-	"github.com/liamg/flinch/core"
+	"github.com/echenim/csui/core"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/stretchr/testify/assert"

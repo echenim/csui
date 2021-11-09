@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/liamg/flinch/widgets"
+	"github.com/echenim/csui/widgets"
 )
 
 func main() {

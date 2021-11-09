@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/liamg/flinch/widgets"
+	"github.com/echenim/csui/widgets"
 )
 
 func main() {

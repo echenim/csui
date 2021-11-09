@@ -1,10 +1,10 @@
 package widgets
 
 import (
+	"github.com/echenim/csui/components"
+	"github.com/echenim/csui/core"
+	"github.com/echenim/csui/window"
 	"github.com/gdamore/tcell/v2"
-	"github.com/liamg/flinch/components"
-	"github.com/liamg/flinch/core"
-	"github.com/liamg/flinch/window"
 )
 
 func PasswordInput(msg string) (string, error) {

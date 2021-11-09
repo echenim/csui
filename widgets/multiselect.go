@@ -5,9 +5,9 @@ import (
 
 	"github.com/gdamore/tcell/v2"
 
-	"github.com/liamg/flinch/components"
-	"github.com/liamg/flinch/core"
-	"github.com/liamg/flinch/window"
+	"github.com/echenim/csui/components"
+	"github.com/echenim/csui/core"
+	"github.com/echenim/csui/window"
 )
 
 var ErrInputCancelled = fmt.Errorf("input cancelled by user")

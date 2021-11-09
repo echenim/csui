@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/liamg/flinch/core"
+	"github.com/echenim/csui/core"
 
 	"github.com/stretchr/testify/assert"
 )

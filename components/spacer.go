@@ -1,7 +1,7 @@
 package components
 
 import (
-	"github.com/liamg/flinch/core"
+	"github.com/echenim/csui/core"
 )
 
 type spacer struct {

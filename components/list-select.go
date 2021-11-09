@@ -3,8 +3,8 @@ package components
 import (
 	"strconv"
 
+	"github.com/echenim/csui/core"
 	"github.com/gdamore/tcell/v2"
-	"github.com/liamg/flinch/core"
 )
 
 type listSelect struct {

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/liamg/flinch/components"
-	"github.com/liamg/flinch/core"
-	window2 "github.com/liamg/flinch/window"
+	"github.com/echenim/csui/components"
+	"github.com/echenim/csui/core"
+	window2 "github.com/echenim/csui/window"
 )
 
 func main() {

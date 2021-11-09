@@ -1,6 +1,6 @@
 package components
 
-import "github.com/liamg/flinch/core"
+import "github.com/echenim/csui/core"
 
 type testComponent struct {
 	size   core.Size

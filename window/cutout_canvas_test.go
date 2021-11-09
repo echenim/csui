@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/liamg/flinch/core"
+	"github.com/echenim/csui/core"
 )
 
 type testCanvas struct {

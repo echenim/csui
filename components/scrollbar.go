@@ -1,6 +1,6 @@
 package components
 
-import "github.com/liamg/flinch/core"
+import "github.com/echenim/csui/core"
 
 func drawScrollbar(canvas core.Canvas, index int, size int, max int) {
 

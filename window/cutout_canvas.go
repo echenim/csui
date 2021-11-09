@@ -1,14 +1,14 @@
 package window
 
 import (
-	"github.com/liamg/flinch/core"
+	"github.com/echenim/csui/core"
 )
 
 type cutoutCanvas struct {
 	parent core.Canvas
 	x      int
 	y      int
-	size core.Size
+	size   core.Size
 }
 
 func NewCutoutCanvas(parent core.Canvas, x, y int, size core.Size) *cutoutCanvas {
@@ -16,7 +16,7 @@ func NewCutoutCanvas(parent core.Canvas, x, y int, size core.Size) *cutoutCanvas
 		parent: parent,
 		x:      x,
 		y:      y,
-		size: size,
+		size:   size,
 	}
 }
 

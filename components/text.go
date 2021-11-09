@@ -3,7 +3,7 @@ package components
 import (
 	"strings"
 
-	"github.com/liamg/flinch/core"
+	"github.com/echenim/csui/core"
 )
 
 type text struct {
