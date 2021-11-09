@@ -7,7 +7,9 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
-func SignInInput(envMsg, usernameMsg, passwordMsg string, options []string) (string, string, string, error) {
+
+
+func SignInComponent(envMsg, usernameMsg, passwordMsg string, options []string) (string, string, string, error) {
 
 	win, err := window.New()
 	if err != nil {

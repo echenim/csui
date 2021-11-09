@@ -8,7 +8,7 @@ import (
 
 func main() {
 	envname := []string{"Dev", "Prod", "Stage"}
-	env, username, password, err := widgets.SignInInput("Select Enviromemnt...", "Enter your name...", "Enter your password...", envname)
+	env, username, password, err := widgets.SignInComponent("Select Enviromemnt...", "Enter your name...", "Enter your password...", envname)
 	if err == widgets.ErrInputCancelled {
 		fmt.Println("User cancelled.")
 		return
