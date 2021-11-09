@@ -19,9 +19,6 @@ func SignInInput(envMsg, usernameMsg, passwordMsg string, options []string) (str
 	if len(usernameMsg) > maxLength {
 		maxLength = len(usernameMsg)
 	}
-	if len(passwordMsg) > maxLength {
-		maxLength = len(passwordMsg)
-	}
 
 	minSize := core.SizeStrategyMultiple(
 		core.SizeStrategyPercentage(80, 0),
@@ -29,31 +26,37 @@ func SignInInput(envMsg, usernameMsg, passwordMsg string, options []string) (str
 		core.SizeStrategyAtMost(core.Size{W: maxLength + 8, H: 100}),
 	)
 
-	env := components.NewListSelect(options)
-	env.SetSizeStrategy(minSize)
-	envtext := components.NewText(envMsg)
-	usernamebox := components.NewInput()
-	passwordbox := components.NewPasswordInput()
+	//setup the enviroment
+	environmentList := components.NewListSelect(options)
+	environmentList.SetSizeStrategy(minSize)
+	environmentFrame := components.NewFrame(environmentList)
 
-	envFrame := components.NewFrame(env)
-	usernameFrame := components.NewFrame(usernamebox)
-	passwordFrame := components.NewFrame(passwordbox)
+	usernameBox := components.NewInput()
+	usernameBox.SetSizeStrategy(minSize)
+	usernameFrame := components.NewFrame(usernameBox)
 
-	envtext.PadText(1)
-	envtext.SetSizeStrategy(minSize)
-	usernametext := components.NewText(usernameMsg)
-	usernametext.PadText(1)
-	usernametext.SetSizeStrategy(minSize)
-	passwordtext := components.NewText(passwordMsg)
-	passwordtext.PadText(1)
-	passwordtext.SetSizeStrategy(minSize)
+	passwordBox := components.NewPasswordInput()
+	passwordBox.SetSizeStrategy(minSize)
+	passwordFrame := components.NewFrame(passwordBox)
+
+	environmentText := components.NewText(envMsg)
+	environmentText.PadText(1)
+	environmentText.SetSizeStrategy(minSize)
+
+	usernameText := components.NewText(usernameMsg)
+	usernameText.PadText(1)
+	usernameText.SetSizeStrategy(minSize)
+
+	passwordText := components.NewText(passwordMsg)
+	passwordText.PadText(1)
+	passwordText.SetSizeStrategy(minSize)
 
 	strip := components.NewColumnLayout()
 	strip.SetSizeStrategy(minSize)
 
 	var selected bool
 
-	passwordbox.OnKeypress(func(key *tcell.EventKey) bool {
+	environmentList.OnKeypress(func(key *tcell.EventKey) bool {
 		switch key.Key() {
 		case tcell.KeyEnter:
 			selected = true
@@ -64,24 +67,77 @@ func SignInInput(envMsg, usernameMsg, passwordMsg string, options []string) (str
 	})
 
 	help := components.NewText("ENTER to confirm, ESC to cancel")
-	help.SetAlignment(core.AlignRight)
 	help.SetSizeStrategy(core.SizeStrategyMaximumWidth())
+	help.SetAlignment(core.AlignRight)
 	help.SetStyle(core.StyleFaint)
 	strip.Add(help)
 
 	rows := components.NewRowLayout()
-	rows.Add(envtext)
-	rows.Add(envFrame)
-	rows.Add(usernametext)
+	rows.Add(environmentText)
+	rows.Add(environmentFrame)
+	rows.Add(usernameText)
 	rows.Add(usernameFrame)
-	rows.Add(passwordtext)
+	rows.Add(passwordText)
 	rows.Add(passwordFrame)
 	rows.Add(components.NewSpacer(core.Size{H: 1}))
 	rows.Add(strip)
 	rows.SetAlignment(core.AlignCenter)
-
 	win.SetAlignment(core.AlignCenter)
 	win.Add(rows)
+
+	// env := components.NewListSelect(options)
+	// env.SetSizeStrategy(minSize)
+	// envtext := components.NewText(envMsg)
+	// usernamebox := components.NewInput()
+	// passwordbox := components.NewPasswordInput()
+
+	// envFrame := components.NewFrame(env)
+	// usernameFrame := components.NewFrame(usernamebox)
+	// passwordFrame := components.NewFrame(passwordbox)
+
+	// envtext.PadText(1)
+	// envtext.SetSizeStrategy(minSize)
+	// usernametext := components.NewText(usernameMsg)
+	// usernametext.PadText(1)
+	// usernametext.SetSizeStrategy(minSize)
+	// passwordtext := components.NewText(passwordMsg)
+	// passwordtext.PadText(1)
+	// passwordtext.SetSizeStrategy(minSize)
+
+	// strip := components.NewColumnLayout()
+	// strip.SetSizeStrategy(minSize)
+
+	// var selected bool
+
+	// passwordbox.OnKeypress(func(key *tcell.EventKey) bool {
+	// 	switch key.Key() {
+	// 	case tcell.KeyEnter:
+	// 		selected = true
+	// 		win.Close()
+	// 		return true
+	// 	}
+	// 	return false
+	// })
+
+	// help := components.NewText("ENTER to confirm, ESC to cancel")
+	// help.SetAlignment(core.AlignRight)
+	// help.SetSizeStrategy(core.SizeStrategyMaximumWidth())
+	// help.SetStyle(core.StyleFaint)
+	// strip.Add(help)
+
+	// rows := components.NewRowLayout()
+	// rows.Add(envtext)
+	// rows.Add(envFrame)
+	// rows.Add(usernametext)
+	// rows.Add(usernameFrame)
+	// rows.Add(passwordtext)
+	// rows.Add(passwordFrame)
+	// rows.Add(components.NewSpacer(core.Size{H: 1}))
+	// rows.Add(strip)
+	// rows.SetAlignment(core.AlignCenter)
+
+	// win.SetAlignment(core.AlignCenter)
+	// win.Add(rows)
 
 	if err := win.Show(); err != nil {
 		return "", "", "", err
@@ -91,9 +147,9 @@ func SignInInput(envMsg, usernameMsg, passwordMsg string, options []string) (str
 		return "", "", "", ErrInputCancelled
 	}
 
-	username := usernamebox.GetInput()
-	password := passwordbox.GetInput()
-	_, enviroment := env.GetSelection()
+	username := usernameBox.GetInput()
+	password := passwordBox.GetInput()
+	_, enviroment := environmentList.GetSelection()
 
 	return enviroment, username, password, nil
 }
