@@ -1,4 +1,4 @@
-# Flinch
+# CSUI
 
 A collection of terminal-based widgets for richer Golang CLI apps.
 
