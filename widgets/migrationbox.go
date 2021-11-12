@@ -79,8 +79,8 @@ func MigrationComponent() (string, string, error) {
 		return "", "", ErrInputCancelled
 	}
 
-	oldID := oldBox.GetInput()
-	newID := newBox.GetInput()
+	oldOrganizationID := oldBox.GetInput()
+	newOrganizationID := newBox.GetInput()
 
-	return oldID, newID, nil
+	return oldOrganizationID, newOrganizationID, nil
 }
