@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/kenshi/workspace/godev/dev/csui'
+go test ./... -race -cover -v
+make: Leaving directory `/Users/kenshi/workspace/godev/dev/csui'
+ 

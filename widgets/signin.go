@@ -7,8 +7,6 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
-
-
 func SignInComponent(envMsg, usernameMsg, passwordMsg string, options []string) (string, string, string, error) {
 
 	win, err := window.New()
@@ -53,12 +51,17 @@ func SignInComponent(envMsg, usernameMsg, passwordMsg string, options []string) 
 	passwordText.PadText(1)
 	passwordText.SetSizeStrategy(minSize)
 
+	signinText := components.NewText("")
+	signinText.SetSizeStrategy(minSize)
+	signinText.SetAlignment(core.AlignCenter)
+
 	strip := components.NewColumnLayout()
 	strip.SetSizeStrategy(minSize)
+	strip.SetAlignment(core.AlignCenter)
 
 	var selected bool
 
-	environmentList.OnKeypress(func(key *tcell.EventKey) bool {
+	passwordBox.OnKeypress(func(key *tcell.EventKey) bool {
 		switch key.Key() {
 		case tcell.KeyEnter:
 			selected = true
@@ -81,6 +84,7 @@ func SignInComponent(envMsg, usernameMsg, passwordMsg string, options []string) 
 	rows.Add(usernameFrame)
 	rows.Add(passwordText)
 	rows.Add(passwordFrame)
+	rows.Add(signinText)
 	rows.Add(components.NewSpacer(core.Size{H: 1}))
 	rows.Add(strip)
 	rows.SetAlignment(core.AlignCenter)
